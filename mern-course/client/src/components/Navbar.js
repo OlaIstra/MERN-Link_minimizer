@@ -13,7 +13,7 @@ export const Navbar = () => {
   };
   return (
     <nav>
-      <div className="nav-wrapper">
+      <div className="nav-wrapper blue-grey darken-1">
         <span href="/" className="brand-logo">
           Logo
         </span>

@@ -30,7 +30,7 @@ function App() {
     >
       <BrowserRouter>
         {isAuthenticated ? <Navbar /> : null}
-        <div className="container">{routes}</div>
+        <div className="container center">{routes}</div>
       </BrowserRouter>
     </AuthContext.Provider>
   );
