@@ -1,0 +1,5 @@
+{
+  "port": 5002,
+  "jwtSecret": "olga mern",
+  "mongoUri": "mongodb+srv://olaistra:Mongodb2020@cluster0-pkwwf.azure.mongodb.net/app?retryWrites=true&w=majority"
+}
