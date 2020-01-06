@@ -1,1 +1,0 @@
-# MERN-Link_minimizer
