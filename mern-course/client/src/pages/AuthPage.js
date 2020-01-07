@@ -15,12 +15,19 @@ export const AuthPage = () => {
     password: ""
   });
 
+  const [isDisabled, setIsDisabled] = useState(true);
+
   useEffect(() => {
     message(error);
     clearError();
   }, [error, message, clearError]);
 
   const changeHandler = event => {
+    const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    reg.test(form.email) && form.password.length > 5
+      ? setIsDisabled(false)
+      : setIsDisabled(true);
+
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
@@ -47,6 +54,7 @@ export const AuthPage = () => {
             <span className="card-title">Authorization</span>
             <div>
               <div className="input-field">
+                <label htmlFor="email">email</label>
                 <input
                   placeholder="Enter email"
                   id="email"
@@ -55,9 +63,11 @@ export const AuthPage = () => {
                   name="email"
                   value={form.email}
                   onChange={changeHandler}
+                  required
                 />
               </div>
               <div className="input-field">
+                <label htmlFor="password">password</label>
                 <input
                   placeholder="Enter password"
                   id="password"
@@ -66,23 +76,31 @@ export const AuthPage = () => {
                   name="password"
                   value={form.password}
                   onChange={changeHandler}
+                  required
+                  minLength="4"
+                  maxLength="8"
+                  size="8"
+                  pattern="[0-9]{4,8}"
+                  title="Enter a password consisting of 4-8 digits"
+                  inputMode="number"
+                  autoComplete="off"
                 />
               </div>
             </div>
           </div>
           <div className="card-action">
             <button
-              className="btn yellow darken-4"
+              className="btn yellow darken-4 btn-login"
               style={{ marginRight: "10px" }}
-              disabled={loading}
+              disabled={isDisabled}
               onClick={loginHandler}
             >
               Log in
             </button>
             <button
-              className="btn grey darken-4"
+              className="btn grey darken-4 btn-signup"
               onClick={registerHandler}
-              disabled={loading}
+              disabled={isDisabled}
             >
               Sign up
             </button>
