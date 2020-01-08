@@ -1,0 +1,10 @@
+{
+  "plugins": ["prettier"],
+  "extends": [
+    "react-app",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/babel",
+    "prettier/react"
+  ]
+}
